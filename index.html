@@ -6,19 +6,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TempMail</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    footer:hover {
+      color: rgb(255, 255, 255);
+    }
+
+    input {
+      padding: 0.25rem;
+      font-size: 1rem;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--secondary-color);
+      margin: 0.25rem;
+      width: 100%;
+      outline: none;
+    }
+
+    input:focus {
+      border: 1px solid var(--primary-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      border: 1px solid var(--secondary-color);
+    }
+
+    table th,
+    table td {
+      border: 1px solid var(--secondary-color);
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    table th {
+      background-color: var(--dark-color);
+      color: var(--light-color);
+    }
+
+    table tr:nth-child(even) {
+      background-color: var(--light-color);
+    }
+
+    table tr:nth-child(odd) {
+      background-color: var(--secondary-color);
+    }
+
+    /* Path: index.php */
+
+    .horizontalContainer {
+      background-color: #00000018;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+      text-align: center;
+      font-size: small;
+      padding: 0.5rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-weight: bolder !important;
+    }
+
+    .social {
+      width: fit-content;
+      height: auto;
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .social a {
+      margin: 5px;
+      font-size: 0.75rem;
+      text-align: center;
+      display: inline-block;
+      color: var(--main-fonts-color);
+    }
+
+    .social a:hover {
+      color: rgb(0, 255, 0);
+    }
+
+    @media (max-width: 768px) {
+      button {
+        font-size: 0.5rem;
+      }
+
+      input {
+        font-size: 0.76rem;
+      }
+
+      table {
+        font-size: 0.76rem;
+      }
+
+      table th,
+      table td {
+        padding: 0.2rem;
+      }
+
+      header img {
+        width: 100%;
+      }
+
+      header p {
+        font-size: 50%;
+      }
+
+      footer {
+        font-size: 50%;
+      }
+    }
+  </style>
   <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
-  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
-  <script src="api.js"></script>
+  <script src="script.js"></script>
 </head>
 
 <body>
-  <div class="horizontalContainer">
-    <input id="addr" placeholder="email address" style="width: 49%" />
-    <button onclick="refreshMail()">Load Mail</button>
-    <button onclick="genEmail()">New Address</button>
+  <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6 space-x-3">
+      <i class="fas fa-envelope text-2xl"></i>
+      <span class="font-semibold text-xl tracking-tight">Temp Mail Generator</span>
+    </div>
+  </nav>
+
+  <div style="background-color: #00000018; " class="flex justify-center items-center pt-5 pb-5 left-4">
+    <div class="flex items-center border-b border-teal-500 py-2">
+      <input id="addr" placeholder="email address" style="width: 45%" />
+      <div class="flex space-x-3">
+        <button onclick="refreshMail()"
+          class="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-1 px-2 border-b-4 border-blue-700 hover:border-blue-500 rounded">Refresh Inbox</button>
+        <button onclick="genEmail()"
+          class="bg-blue-500 hover:bg-blue-400 text-white font-semibold py-1 px-2 border-b-4 border-blue-700 hover:border-blue-500 rounded">New
+          Address</button>
+      </div>
+    </div>
   </div>
+
   <hr />
+
   <table id="emails"></table>
 
   <footer>
@@ -30,7 +167,7 @@
   </footer>
 
   <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="api.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
