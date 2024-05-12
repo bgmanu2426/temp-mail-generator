@@ -1,7 +1,3 @@
-// Author: Mehmet Kahya
-// Created: 17 March 2024
-// Last Updated: 5.05.2024
-
 function getUserAndDomain() {
     const addr = $("#addr").val();
     if (!addr) {
